@@ -63,4 +63,10 @@ export class FacebookLogic {
 
     return await loginPromise;
   }
+
+  public static getPageAccessToken() {
+    FB.api("/me/accounts", function (response) {
+      console.log(response);
+    });
+  }
 }
