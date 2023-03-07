@@ -7,12 +7,12 @@
 
       <h1 class="text-h2 font-weight-bold">Showtime</h1>
 
-      <div class="py-14" />
+      <!-- <div class="py-14" /> -->
 
       <v-row class="d-flex align-center justify-center">
         <v-col cols="auto">
           <v-btn
-            href="https://next.vuetifyjs.com/components/all/"
+            href="/improneuf/frontend/#/teams"
             min-width="164"
             rel="noopener noreferrer"
             target="_blank"
@@ -27,7 +27,7 @@
         <v-col cols="auto">
           <v-btn
             color="primary"
-            href="https://next.vuetifyjs.com/introduction/why-vuetify/#feature-guides"
+            href="/improneuf/frontend/#/events"
             min-width="228"
             rel="noopener noreferrer"
             size="x-large"
@@ -42,7 +42,7 @@
 
         <v-col cols="auto">
           <v-btn
-            href="https://community.vuetifyjs.com/"
+            href="/improneuf/frontend/#/users"
             min-width="164"
             rel="noopener noreferrer"
             target="_blank"
