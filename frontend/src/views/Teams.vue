@@ -1,7 +1,22 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="d-flex align-center text-center fill-height">
-      <AddTeamDialog />
+      <v-btn
+        min-width="164"
+        @click="onClickAddTeam"
+        rel="noopener noreferrer"
+        target="_blank"
+        variant="text"
+      >
+        <v-icon icon="mdi-account-group" size="large" start />
+
+        Add Team...
+      </v-btn>
+      <CrudTeamDialog
+        :action="action"
+        :team="selectedTeam"
+        @finished="updateTable"
+      />
 
       <v-table>
         <thead>
@@ -12,16 +27,35 @@
             <th class="text-left">Captain Name</th>
             <th class="text-left">Captain Email</th>
             <th class="text-left">Member Names</th>
+            <th class="text-left">Actions</th>
             <!-- <th class="text-left">Image</th> -->
           </tr>
         </thead>
         <tbody>
-          <tr v-for="team in teams" :key="team.teamName">
+          <tr v-for="team in teams" :key="team.id">
             <td class="text-left">{{ team.teamName }}</td>
             <td class="text-left">{{ team.teamDescription }}</td>
             <td class="text-left">{{ team.teamCaptainName }}</td>
             <td class="text-left">{{ team.teamCaptainEmail }}</td>
             <td class="text-left">{{ team.teamMemberNames }}</td>
+            <td class="text-left actions">
+              <v-btn
+                class="action-button"
+                @click="onClickDelete(team)"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <v-icon icon="mdi-trash-can" size="large" />
+              </v-btn>
+              <v-btn
+                class="action-button"
+                @click="onClickEdit(team)"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <v-icon icon="mdi-pencil" size="large" />
+              </v-btn>
+            </td>
             <!-- <td><img :src="team.teamImage" /></td> -->
           </tr>
         </tbody>
@@ -33,8 +67,11 @@
 <script lang="ts" setup>
 import { fetchTeams } from "@/models/backend";
 import { Ref, ref } from "vue";
-import AddTeamDialog from "@/components/AddTeamDialog.vue";
+import CrudTeamDialog from "@/components/CrudTeamDialog.vue";
 import { Team } from "@/models/interfaces";
+
+const action = ref("none");
+const selectedTeam = ref({} as Team);
 
 const teams: Ref<Array<Team>> = ref([
   // {
@@ -45,7 +82,6 @@ const teams: Ref<Array<Team>> = ref([
   //   teamCaptainEmail: "-",
   //   teamMemberNames: "-",
   //   teamImage: "-",
-  // },
   // },
   // {
   //   id: 2,
@@ -85,7 +121,38 @@ const teams: Ref<Array<Team>> = ref([
   // },
 ]);
 
-fetchTeams().then((data) => {
-  teams.value = data;
-});
+updateTable();
+
+function updateTable() {
+  action.value = "none";
+  fetchTeams().then((data) => {
+    teams.value = data;
+  });
+}
+
+function onClickEdit(team: Team) {
+  selectedTeam.value = team;
+  action.value = "edit";
+}
+
+function onClickAddTeam() {
+  selectedTeam.value = {} as Team;
+  action.value = "add";
+}
+
+function onClickDelete(team: Team) {
+  selectedTeam.value = team;
+  action.value = "delete";
+}
 </script>
+
+<style scoped>
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-button {
+  margin-top: 7px;
+}
+</style>

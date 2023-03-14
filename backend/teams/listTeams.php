@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$db = new SQLite3('database.db');
+$db = new SQLite3('../database.db');
 
 // Get the teams from the database
 $teams = $db->query('SELECT id, teamName, teamDescription, teamCaptainName, teamCaptainEmail, teamMemberNames, teamImage FROM teams');
