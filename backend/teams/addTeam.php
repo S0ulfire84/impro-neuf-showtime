@@ -14,15 +14,6 @@ $teamCaptainEmail = $data->teamCaptainEmail;
 $teamMemberNames = $data->teamMemberNames;
 $teamImage = $data->teamImage;
 
-// $teamName = $_POST['teamName'];
-// $teamDescription = $_POST['teamDescription'];
-// $teamCaptainName = $_POST['teamCaptainName'];
-// $teamCaptainEmail = $_POST['teamCaptainEmail'];
-// $teamMemberNames = $_POST['teamMemberNames'];
-
-// Get the image from the POST request
-// $teamImage = $_FILES['teamImage'];
-
 // Echo received data
 echo $teamName;
 echo $teamDescription;

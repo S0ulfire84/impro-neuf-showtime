@@ -3,7 +3,7 @@
 $db = new SQLite3('database.db');
 
 // Create the table "users" if it doesn't exist
-$db->exec('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT, email TEXT, password TEXT)');
+$db->exec('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT, email TEXT, password TEXT, role TEXT)');
 
 // Create the table "teams" if it doesn't exist, which consists of an ID, team name, team description, team captain's name and email, and team members' names and blob of the team image
 $db->exec('CREATE TABLE IF NOT EXISTS teams (id INTEGER PRIMARY KEY, teamName TEXT, teamDescription TEXT, teamCaptainName TEXT, teamCaptainEmail TEXT, teamMemberNames TEXT, teamImage BLOB)');

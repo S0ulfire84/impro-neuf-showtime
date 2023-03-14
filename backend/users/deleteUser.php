@@ -8,7 +8,7 @@ $data = json_decode($json);
 $id = $data->id;
 
 
-// Delete the team from the database
-$db->exec("DELETE FROM teams WHERE id = '$id'");
+// Delete the user from the database
+$db->exec("DELETE FROM users WHERE id = '$id'");
 
 ?>

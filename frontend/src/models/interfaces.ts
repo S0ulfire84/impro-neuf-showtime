@@ -7,3 +7,11 @@ export interface Team {
   teamMemberNames: string;
   teamImage: string;
 }
+
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+}

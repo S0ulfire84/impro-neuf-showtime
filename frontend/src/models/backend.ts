@@ -1,4 +1,6 @@
-import { Team } from "./interfaces";
+import { Team, User } from "./interfaces";
+
+// Teams
 
 export async function fetchTeams(): Promise<Team[]> {
   const teamsResponse = await GET("../backend/teams/listTeams.php");
@@ -15,6 +17,25 @@ export function editTeam(team: Team) {
 
 export function deleteTeam(team: Team) {
   return POST("../backend/teams/deleteTeam.php", team);
+}
+
+// Users
+
+export function addUser(user: User) {
+  return POST("../backend/users/addUser.php", user);
+}
+
+export function editUser(user: User) {
+  return POST("../backend/users/editUser.php", user);
+}
+
+export function deleteUser(user: User) {
+  return POST("../backend/users/deleteUser.php", user);
+}
+
+export async function fetchUsers(): Promise<User[]> {
+  const usersResponse = await GET("../backend/users/listUsers.php");
+  return usersResponse.json();
 }
 
 // #### Functions to send POST and GET requests to the backend
